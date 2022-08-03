@@ -1,0 +1,6 @@
+acc-models-lhc
+acc-py
+py_wireDAQ
+py_env
+.ipynb_checkpoints
+Backend/__pycache__
