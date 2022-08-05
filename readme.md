@@ -86,7 +86,7 @@ df    = sparkspace.query(var,_start,_stop)
 
 
 ## Installation:
-This package is intended to be used on a acc computer. We first need to install nxcals and the working python environment:
+This package is intended to be used on a acc computer. We first need to install nxcals and the working python environment. Modify the last line of `installme.sh` with your username: `... username@lxplus.cern.ch: ...` and then:
 ```bash
 bash installme.sh 
 ```
@@ -99,6 +99,14 @@ source py_env/bin/activate
 To launch the spark builder, a `kinit` is needed:
 ```bash
 kinit username
+```
+
+**Warning** : to ensure compatibility of xtrack with python 3.7 used in acc-py, one needs to change the 4 f-strings in `./py_env/xtrack/xtrack/loss_location_refinement` as such:
+```python
+# From 
+f'{i_aper_1=}'
+# To
+f'i_aper_1={i_aper_1}'
 ```
 
 

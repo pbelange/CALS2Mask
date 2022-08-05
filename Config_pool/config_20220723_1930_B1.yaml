@@ -1,11 +1,12 @@
 # Links to be made for tools and scripts
+# tracking_tools should have been automatically generated
 links:
-  tracking_tools: /afs/cern.ch/eng/tracking-tools
-  modules: tracking_tools/modules
-  tools: tracking_tools/tools
-  beambeam_macros: tracking_tools/beambeam_macros
-  errors: tracking_tools/errors
-  optics_repository: /afs/cern.ch/eng/lhc/optics
+  tracking_tools: /home/pbelange/abp/CALS2Mask/py_wireDAQ
+  modules: tracking_tools/modules                              # https://github.com/lhcopt/lhcmask.git 
+  tools: tracking_tools/tools                                  # https://github.com/lhcopt/lhctoolkit.git
+  beambeam_macros: tracking_tools/beambeam_macros              # https://github.com/lhcopt/beambeam_macros.git
+  errors: tracking_tools/errors                                # https://github.com/lhcopt/lhcerrors.git
+  optics_repository: tracking_tools/optics/2021_V6/PROTON/     # /afs/cern.ch/eng/lhc/optics/runIII/RunIII_dev/2021_V6
 
 # Mode - choose between:
 
@@ -31,7 +32,7 @@ wires_L: 1                 #[m] Physical lenght of the wires
 
 
 # Optics file
-optics_file: acc-models-lhc/operation/optics/R2022a_A30cmC30cmA10mL200cm.madx
+optics_file: optics_repository/opticsfile.32
 
 # Enable checks
 check_betas_at_ips: true
@@ -71,7 +72,7 @@ chromaticity_y: 15
 vrf_total: 12.0         # [MV]
 
 # Octupole current
-oct_current: -430       # [A]
+oct_current: -295.5274658203125 # [A]
 
 # Luminosity parameters
 enable_lumi_control: true
@@ -79,10 +80,11 @@ sep_plane_ip1: x        # used by python tools - NOT by legacy macros
 sep_plane_ip2: x        # used by python tools - NOT by legacy macros
 sep_plane_ip5: y        # used by python tools - NOT by legacy macros
 sep_plane_ip8: y        # used by python tools - NOT by legacy macros
-lumi_ip1: 6.4e+27       # [Hz/cm2] leveled luminosity in IP1 
-lumi_ip2: 6.4e+27       # [Hz/cm2] leveled luminosity in IP2 
-lumi_ip5: 6.4e+27       # [Hz/cm2] leveled luminosity in IP5
-lumi_ip8: 1.0e+27       # [Hz/cm2] leveled luminosity in IP8 
+lumi_ip1: 4.577e+33     # [Hz/cm2] leveled luminosity in IP1 
+lumi_ip2: 8.6054e+30    # [Hz/cm2] leveled luminosity in IP2 
+lumi_ip5: 4.9126e+33    # [Hz/cm2] leveled luminosity in IP5
+lumi_ip8: 1.7787e+32    # [Hz/cm2] leveled luminosity in IP8 
+fullsep_in_sigmas_ip2: 5
 nco_IP1: 974.0         # number of Head-On collisions in IP1
 nco_IP2: 876.0         # number of Head-On collisions in IP2
 nco_IP5: 974.0         # number of Head-On collisions in IP5
@@ -101,8 +103,8 @@ beambeam_config:
   bunch_particle_charge:
   sigmaz_m:
   z_crab_twiss: 0.0
-  filling_scheme_json:
-  bunch_to_track:
+  #filling_scheme_json:
+  #bunch_to_track:
 
 # Match tunes and chromaticities including beam-beam effects
 match_q_dq_with_bb: false        # should be off at collision

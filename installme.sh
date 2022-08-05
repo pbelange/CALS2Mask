@@ -24,7 +24,7 @@ python -m pip install jupyterlab nxcals
 pip install cpymad
 
 # Add lhcmask and xsuite
-git clone https://github.com/pbelange/lhcmask.git py_env/lhcmask
+git clone https://github.com/lhcopt/lhcmask.git py_env/lhcmask
 pip install -e py_env/lhcmask
 
 git clone https://github.com/xsuite/xobjects py_env/xobjects
@@ -55,3 +55,17 @@ pip install ruamel.yaml
 
 # Removing the installer
 rm acc-py-2020.11-installer.sh
+
+# Adjusting the links of Backend/config_template.yaml:
+sed -i "s|tracking_tools: .*|tracking_tools: $PWD\/py_env|" Backend/config_template.yaml
+
+# Adding modules,tools,beambeam,errors:
+git clone https://github.com/lhcopt/lhcmask.git py_env/modules
+git clone https://github.com/lhcopt/lhctoolkit.git py_env/tools
+git clone https://github.com/lhcopt/beambeam_macros.git py_env/beambeam_macros
+git clone https://github.com/lhcopt/lhcerrors.git py_env/errors
+
+# Copying relevant optics files over ssh:
+rsync -rv phbelang@lxplus.cern.ch:/afs/cern.ch/eng/lhc/optics/runIII/RunIII_dev/2021_V6 py_env/optics
+
+

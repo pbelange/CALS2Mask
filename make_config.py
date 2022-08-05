@@ -38,7 +38,7 @@ fill_stop ,_     = _fillparser.get_next(_var,returnTS=True)
 #=============================================
 
 # Extracting main DataFrame for the config
-allvars = _fillparser.get_varList()
+allvars = parser.Parser().get_varList()
 
 data_list = []
 for _var in list(set(allvars)):
@@ -66,7 +66,7 @@ for beam in ['B1','B2']:
 
     # saving to new file
     format_ts = pd.Timestamp(snapshot_ts).strftime('%Y%m%d_%H%M')
-    with open(f'config_{format_ts}_{beam}.yaml','w') as yamlfile:
+    with open(f'Config_pool/config_{format_ts}_{beam}.yaml','w') as yamlfile:
         yaml.dump(newConfig,yamlfile)
 
         
