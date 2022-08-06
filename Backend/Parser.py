@@ -51,10 +51,12 @@ class Parser():
                                               'B2':'LHC.BQM.B2:BUNCH_LENGTH_MEAN'},
                         'beam_npart'       : {'B1':'LHC.BCTDC.A6R4.B1:BEAM_INTENSITY',
                                               'B2':'LHC.BCTDC.A6R4.B2:BEAM_INTENSITY'},
+                        'beam_n_bunches'   : {'B1':'LHC.BQM.B1:NO_BUNCHES',
+                                              'B2':'LHC.BQM.B2:NO_BUNCHES'},
                         'beam_energy_tot'  : {'B1':'LHC.BCCM.B1.A:BEAM_ENERGY',
                                               'B2':'LHC.BCCM.B2.A:BEAM_ENERGY'},
-                        'oct_current'      : {'B1':'RPMBB.UJ33.ROD.A23B1:I_MEAS',
-                                              'B2':'RPMBB.UJ33.ROD.A23B2:I_MEAS'},
+                        'oct_current'      : {'B1':'RPMBB.UJ33.ROF.A23B1:I_MEAS',
+                                              'B2':'RPMBB.UJ33.ROF.A23B2:I_MEAS'},
                         'lumi_ip1'         : 'ATLAS:LUMI_TOT_INST',
                         'lumi_ip2'         : 'ALICE:LUMI_TOT_INST',
                         'lumi_ip5'         : 'CMS:LUMI_TOT_INST',
@@ -145,7 +147,9 @@ class Parser():
         _var  = self.varlist['beam_npart'][self.beam]
         value = self.get_previous(_var)
         
-        return int(value)
+        nbunches = self.get_previous(self.varlist['beam_n_bunches'][self.beam])
+        
+        return int(value/nbunches)
     #---------------------
     @property
     def beam_energy_tot(self,):         
@@ -199,28 +203,28 @@ class Parser():
         _var  = self.varlist['nco_IP1']
         value = self.get_previous(_var)
         
-        return value
+        return int(value)
     #---------------------
     @property
     def nco_IP5(self,):
         _var  = self.varlist['nco_IP5']
         value = self.get_previous(_var)
         
-        return value
+        return int(value)
     #---------------------
     @property
     def nco_IP2(self,):
         _var  = self.varlist['nco_IP2']
         value = self.get_previous(_var)
         
-        return value
+        return int(value)
     #---------------------
     @property
     def nco_IP8(self,):
         _var  = self.varlist['nco_IP8']
         value = self.get_previous(_var)
         
-        return value
+        return int(value)
     #---------------------
     @property
     def on_x1(self,):

@@ -1,7 +1,7 @@
 # Links to be made for tools and scripts
 # tracking_tools should have been automatically generated
 links:
-  tracking_tools: /home/pbelange/abp/CALS2Mask/py_wireDAQ
+  tracking_tools: /home/phbelang/abp/CALS2Mask/py_env
   modules: tracking_tools/modules                              # https://github.com/lhcopt/lhcmask.git 
   tools: tracking_tools/tools                                  # https://github.com/lhcopt/lhctoolkit.git
   beambeam_macros: tracking_tools/beambeam_macros              # https://github.com/lhcopt/beambeam_macros.git
@@ -72,7 +72,7 @@ chromaticity_y: 15
 vrf_total: 12.0         # [MV]
 
 # Octupole current
-oct_current: -430       # [A]
+oct_current: 000       # [A]
 
 # Luminosity parameters
 enable_lumi_control: true
@@ -125,8 +125,8 @@ verbose_mad_parts: true
 # Optics-specific knob namings
 knob_names:
   # Common knobs
-  sepknob_ip2_mm: on_sep2
-  sepknob_ip8_mm: on_sep8
+  sepknob_ip2_mm: on_sep2h
+  sepknob_ip8_mm: on_sep8v
   sepknob_ip1_mm: on_sep1
   sepknob_ip5_mm: on_sep5
 

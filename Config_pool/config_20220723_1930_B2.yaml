@@ -1,7 +1,7 @@
 # Links to be made for tools and scripts
 # tracking_tools should have been automatically generated
 links:
-  tracking_tools: /home/pbelange/abp/CALS2Mask/py_wireDAQ
+  tracking_tools: /home/phbelang/abp/CALS2Mask/py_env
   modules: tracking_tools/modules                              # https://github.com/lhcopt/lhcmask.git 
   tools: tracking_tools/tools                                  # https://github.com/lhcopt/lhctoolkit.git
   beambeam_macros: tracking_tools/beambeam_macros              # https://github.com/lhcopt/beambeam_macros.git
@@ -59,7 +59,7 @@ beam_norm_emit_x: 1.4367134905573662 # [um]
 beam_norm_emit_y: 1.359021165398161 # [um]
 beam_sigt: 0.30069127446113253  # [m]
 beam_sige: 1.1e-4
-beam_npart: 85156221602825      # protons
+beam_npart: 86277833437         # protons
 beam_energy_tot: 6799.6796875   # [GeV]
 
 # Tunes and chromaticities
@@ -72,7 +72,7 @@ chromaticity_y: 15
 vrf_total: 12.0         # [MV]
 
 # Octupole current
-oct_current: -295.5277404785156 # [A]
+oct_current: 295.52734375 # [A]
 
 # Luminosity parameters
 enable_lumi_control: true
@@ -83,12 +83,12 @@ sep_plane_ip8: y        # used by python tools - NOT by legacy macros
 lumi_ip1: 4.577e+33     # [Hz/cm2] leveled luminosity in IP1 
 lumi_ip2: 8.6054e+30    # [Hz/cm2] leveled luminosity in IP2 
 lumi_ip5: 4.9126e+33    # [Hz/cm2] leveled luminosity in IP5
-lumi_ip8: 1.7787e+32    # [Hz/cm2] leveled luminosity in IP8 
+lumi_ip8: 1.7787e+32    # [Hz/cm2] leveled luminosity in IP8
 fullsep_in_sigmas_ip2: 5
-nco_IP1: 974.0         # number of Head-On collisions in IP1
-nco_IP2: 876.0         # number of Head-On collisions in IP2
-nco_IP5: 974.0         # number of Head-On collisions in IP5
-nco_IP8: 912.0         # number of Head-On collisions in IP8
+nco_IP1: 974           # number of Head-On collisions in IP1
+nco_IP2: 876           # number of Head-On collisions in IP2
+nco_IP5: 974           # number of Head-On collisions in IP5
+nco_IP8: 912           # number of Head-On collisions in IP8
 
 # Beam-beam parameters (used by python tools - NOT by legacy macros)
 beambeam_config:
@@ -103,8 +103,8 @@ beambeam_config:
   bunch_particle_charge:
   sigmaz_m:
   z_crab_twiss: 0.0
-  #filling_scheme_json:
-  #bunch_to_track:
+  #filling_scheme_json: null
+  #bunch_to_track: null
 
 # Match tunes and chromaticities including beam-beam effects
 match_q_dq_with_bb: false        # should be off at collision
@@ -125,8 +125,8 @@ verbose_mad_parts: true
 # Optics-specific knob namings
 knob_names:
   # Common knobs
-  sepknob_ip2_mm: on_sep2
-  sepknob_ip8_mm: on_sep8
+  sepknob_ip2_mm: on_sep2h
+  sepknob_ip8_mm: on_sep8v
   sepknob_ip1_mm: on_sep1
   sepknob_ip5_mm: on_sep5
 

@@ -52,6 +52,7 @@ pip install matplotlib
 pip install scipy
 pip install ipympl
 pip install ruamel.yaml
+pip install rich
 
 # Removing the installer
 rm acc-py-2020.11-installer.sh
@@ -66,6 +67,15 @@ git clone https://github.com/lhcopt/beambeam_macros.git py_env/beambeam_macros
 git clone https://github.com/lhcopt/lhcerrors.git py_env/errors
 
 # Copying relevant optics files over ssh:
-rsync -rv phbelang@lxplus.cern.ch:/afs/cern.ch/eng/lhc/optics/runIII/RunIII_dev/2021_V6 py_env/optics
+rsync -rv phbelang@lxplus.cern.ch:/afs/cern.ch/eng/lhc/optics/runIII/RunIII_dev/2021_V6 :/afs/cern.ch/eng/lhc/optics/runII/2018 :/afs/cern.ch/eng/lhc/optics/runIII/RunIII_dev/IR7-Run3seqedit.madx py_env/optics
 
 
+# Modifying xtrack for python 3.7.9 compatibility
+sed -i "s|{i_aper_1=}, {i_aper_0=}|i_aper_1={i_aper_1}, i_aper_0={i_aper_0}|" py_env/xtrack/xtrack/loss_location_refinement/loss_location_refinement.py
+sed -i "s|{presence_shifts_rotations=}|presence_shifts_rotations={presence_shifts_rotations}|" py_env/xtrack/xtrack/loss_location_refinement/loss_location_refinement.py
+sed -i "s|{iteration=}|iteration={iteration}|" py_env/xtrack/xtrack/loss_location_refinement/loss_location_refinement.py
+
+
+# Modifying lhc.seq to account for the missing harmonic number
+sed -i "s|ACSCA : RFCAVITY, L := l.ACSCA;|ACSCA : RFCAVITY, L := l.ACSCA, HARMON := HRF400;|" acc-models-lhc/lhc.seq
+sed -i "s|ACSCA : RFCAVITY, L := l.ACSCA;|ACSCA : RFCAVITY, L := l.ACSCA, HARMON := HRF400;|" acc-models-lhc/lhcb4.seq

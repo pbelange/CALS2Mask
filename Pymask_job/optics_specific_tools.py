@@ -16,8 +16,7 @@ def build_sequence(mad, beam, configuration):
     slicefactor = 8 # For production
 
     pm.make_links(force=True, links_dict={
-        'optics_runII': '/afs/cern.ch/eng/lhc/optics/runII',
-        'optics_runIII': '/afs/cern.ch/eng/lhc/optics/runIII',})
+        'optics_runII': '../py_env/optics',})
 
     mylhcbeam = int(beam)
 
@@ -37,17 +36,14 @@ def build_sequence(mad, beam, configuration):
 
     assert mylhcbeam in [1, 2, 4], "Invalid mylhcbeam (it should be in [1, 2, 4])"
 
-    #if mylhcbeam in [1, 2]:
-    #    mad.call('acc-models-lhc/lhc.seq')
-    #else:
-    #    mad.call('acc-models-lhc/lhcb4.seq')
     if mylhcbeam in [1, 2]:
-        mad.call('optics_runII/2018/lhc_as-built.seq')
+        mad.call('acc-models-lhc/lhc.seq')
     else:
-        mad.call('optics_runII/2018/lhcb4_as-built.seq')
+        mad.call('acc-models-lhc/lhcb4.seq')
+
 
     # New IR7 MQW layout and cabling
-    mad.call('optics_runIII/RunIII_dev/IR7-Run3seqedit.madx')
+    mad.call('../py_env/optics/IR7-Run3seqedit.madx')
 
     # Makethin part
     if slicefactor > 0:

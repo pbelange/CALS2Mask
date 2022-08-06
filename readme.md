@@ -108,6 +108,8 @@ f'{i_aper_1=}'
 # To
 f'i_aper_1={i_aper_1}'
 ```
+This should be done automatically at the end of the `installme.sh` script.
+
 
 
 

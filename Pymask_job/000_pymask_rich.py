@@ -8,11 +8,14 @@ import numpy as np
 from rich.progress import Progress, BarColumn, TextColumn,TimeElapsedColumn,SpinnerColumn
 import bbcw as bbcw
 
+
 #####################################################
 # Read general configurations and setup envirnoment #
 #####################################################
 
 CONFIGFILE = '../Config_pool/config_20220723_1930_B1.yaml'
+#CONFIGFILE = '../Config_pool/test.yaml'
+
 #CONFIGFILE  = '/home/pbelange/abp/CALS2Mask/py_wireDAQ/lhcmask/python_examples/run3_collisions_wire/config.yaml'
 # making sure the optics file will be accessible:
 kk = 'acc-models-lhc'
@@ -136,7 +139,13 @@ progress_step = progress.add_task(f"[cyan]    Build MAD-X Sequence",total=1)
 
 # Start mad
 Madx = pm.Madxp
-mad = Madx(command_log="mad_collider.log")
+#mad = Madx(command_log="mad_collider.log")
+
+#std_file = open('madx_output.log', 'w')
+#madx = Madx(stdout=std_file,command_log="mad_collider.log")
+
+with open('madx_output.log', 'w') as std_file:
+    mad = Madx(stdout=std_file,command_log="mad_collider.log")
 
 # Set verbose flag
 mad.globals.par_verbose = int(configuration['verbose_mad_parts'])
@@ -718,3 +727,5 @@ progress.update(progress_step, advance=1,update=True)
 progress.refresh()
 progress.stop()
 progress.console.clear_live()
+
+std_file.close()
